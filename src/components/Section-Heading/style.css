@@ -1,0 +1,21 @@
+.section-heading {
+  width: 450px;
+  margin-inline: auto;
+  text-align: center;
+  color: var(--mainDarkColor);
+}
+.section-heading h3 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+.section-heading h3 span {
+  color: var(--altBlueColor);
+}
+.section-heading p {
+  color: #a5a9aa;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}

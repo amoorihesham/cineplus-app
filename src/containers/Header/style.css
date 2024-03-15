@@ -1,0 +1,29 @@
+header {
+  height: 100vh;
+}
+.hero-section {
+  height: calc(100vh - 56px);
+  background-image: url(../../assets/images/hero-image.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.text {
+  max-width: 550px;
+  margin-inline: auto;
+  padding: 4rem 0;
+}
+.hero-heading {
+  color: var(--mainWhiteColor);
+  font-size: 3.5rem;
+  font-weight: var(--MeduimFont);
+  line-height: 1.1;
+}
+.hero-heading span {
+  color: var(--altBlueColor);
+}
+.hero-para {
+  max-width: 470px;
+  color: var(--veryPaleBlueColor);
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
