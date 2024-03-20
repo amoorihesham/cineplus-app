@@ -1,7 +1,0 @@
-.btn {
-  font-weight: 700;
-}
-.btn:hover {
-  background-color: var(--altBlueColor);
-  border-color: var(--altBlueColor);
-}

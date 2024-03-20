@@ -1,15 +1,13 @@
 header {
-  height: 100vh;
-}
-.hero-section {
-  height: calc(100vh - 56px);
-  background-image: url(../../assets/images/hero-image.jpg);
+  min-height: 100vh;
+  background-image: url(../../../public/images/hero-avatar.jpg);
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
-.text {
+.hero-section {
   max-width: 550px;
-  margin-inline: auto;
+  min-height: calc(100vh - 56px);
   padding: 4rem 0;
 }
 .hero-heading {

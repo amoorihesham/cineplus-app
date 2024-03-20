@@ -1,0 +1,10 @@
+.banner-section {
+  background-image: url(../../../public/images/popcorn.jpg);
+  background-size: cover;
+  background-position: center center;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}

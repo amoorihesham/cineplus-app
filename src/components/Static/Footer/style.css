@@ -1,11 +1,11 @@
 footer {
   background-color: var(--mainWhiteColor);
-  background-image: url(../../assets/images/footer-image.png);
+  background-image: url(../../../../public/images/footer-bg.jpg);
   background-size: cover;
   background-position: center center;
-  height: 50vh;
-  position: relative;
+  min-height: 60vh;
 }
+
 .footer-left-box-para {
   max-width: 330px;
   letter-spacing: 0.5px;

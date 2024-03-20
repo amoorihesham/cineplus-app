@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../containers/Main-Layout/MainLayout";
-import Home from "../pages/Home/Home";
+import { ComingSoon, Home, NowPlaying } from "../pages";
 
 const router = createBrowserRouter([
   {
@@ -10,6 +10,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/nowplaying",
+        element: <NowPlaying />,
+      },
+      {
+        path: "/comingsoon",
+        element: <ComingSoon />,
       },
     ],
   },

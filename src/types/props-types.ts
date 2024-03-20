@@ -1,23 +1,43 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-export type ButtonCustProps={
-    text:string,
-    size:string
-}
 
-export type HIWBoxProps = {
-    boxColor: string;
-    icon: IconProp;
-    iconColor?: string;
-    scale?: boolean;
+export type movieCardProp = {
+  data: {
+    adult?: boolean;
+    backdrop_path: string;
+    genre_ids: number[];
+    id: number;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    popularity: number;
+    poster_path: string;
+    release_date: string;
     title: string;
-    text: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
   };
+};
 
-  export type SectionHeadingProps = {
-    heading: string;
-    text: string;
-    highlight: string;
-  };
+export type MovieProps = {
+  adult: boolean,
+  backdrop_path: string,
+  genre_ids: number[],
+  id: number,
+  original_language: string,
+  original_title: string,
+  overview: string,
+  popularity: number,
+  poster_path: string,
+  release_date: string,
+  title: string,
+  video: boolean,
+  vote_average: number,
+  vote_count: number
 
+};
 
+export type SectionProps = {
+  sectionName: string,
+  nowPlayingList: MovieProps[]
+}

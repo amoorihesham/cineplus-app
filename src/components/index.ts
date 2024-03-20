@@ -1,8 +1,9 @@
-import Navbar from "./Navbar/Navbar";
-import ButtonCust from "./BTN/Button";
-import Hero from "./Hero/Hero";
-import Footer from "./Footer/Footer";
-import Sectionheading from "./Section-Heading/SectionHeading";
-import HIWBox from "./HIW-Box/HIWBox";
 
-export {Navbar,ButtonCust,Hero,Footer,Sectionheading,HIWBox};
+import Hero from "./Static/Hero/Hero";
+import Footer from "./Static/Footer/Footer";
+import Section from "./Section/Section";
+import MovieCard from "./Moive-Card/MovieCard";
+
+
+
+export {  Hero, Footer, Section, MovieCard };
