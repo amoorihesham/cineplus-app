@@ -41,6 +41,5 @@ export type MovieProps = {
 export type SectionProps = {
   sectionName: string,
   route: string,
-  queryKey: string,
-  queryFn: () => Promise<any>
+
 }

@@ -2,7 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import { Hero, LoadingSkeleton } from "../../components";
 
 import {
+  faBolt,
   faFilm,
+  faFire,
   faHourglassHalf,
   faHouse,
   faSearch,
@@ -34,23 +36,35 @@ const Header = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link  " aria-current="page" to="/">
-                  <FontAwesomeIcon icon={faHouse} style={{ marginRight: 5 }} />{" "}
+                  <FontAwesomeIcon icon={faHouse} style={{ marginRight: 5 }} />
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link " to="/nowplaying">
+                <NavLink className="nav-link " to="/now_shownig">
                   <FontAwesomeIcon icon={faFilm} style={{ marginRight: 5 }} />
                   Now Showing
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link " to="/comingsoon">
+                <NavLink className="nav-link " to="/populare">
+                  <FontAwesomeIcon icon={faFire} style={{ marginRight: 5 }} />
+                  Populare
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link " to="/up_coming">
                   <FontAwesomeIcon
                     icon={faHourglassHalf}
                     style={{ marginRight: 5 }}
-                  />{" "}
-                  Coming Soon
+                  />
+                  Up Coming
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link " to="/top_rated">
+                  <FontAwesomeIcon icon={faBolt} style={{ marginRight: 5 }} />
+                  Top Rated
                 </NavLink>
               </li>
               <li className="nav-item main-bg rounded-3 d-flex align-items-center justify-content-center">

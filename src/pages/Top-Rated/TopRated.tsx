@@ -3,22 +3,22 @@ import { MovieCard } from "../../components";
 import { MovieProps } from "../../types/props-types";
 import { useState } from "react";
 
-import useAllUCD from "../../utils/hooks/useComingSoonData";
+import useAllTRD from "../../utils/hooks/useAllTopRatedData";
 
-const ComingSoon = () => {
+const TopRated = () => {
   const [page, setPage] = useState(1);
   const queryClient = useQueryClient();
   const {
     data: { results, total_pages },
     error,
-  } = useAllUCD(page);
+  } = useAllTRD(page);
   if (error) {
     throw error;
   }
   return (
     <div className="coming-soon-page py-5">
       <div className="container">
-        <h2 className="text-white fw-bold h4 mb-4">Coming Soon</h2>
+        <h2 className="text-white fw-bold h4 mb-4">Top Rated</h2>
         <div className="row g-4">
           {results?.map((movie: MovieProps) => (
             <div className="col-md-6 col-lg-4 col-xl-3" key={movie.id}>
@@ -49,4 +49,4 @@ const ComingSoon = () => {
   );
 };
 
-export default ComingSoon;
+export default TopRated;

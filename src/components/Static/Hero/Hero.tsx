@@ -1,22 +1,24 @@
 import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
-
-import { getMovieFullDetails, getTopRated } from "../../../utils/functions-api";
+import useAllPD from "../../../utils/hooks/useAllPopularData";
+import { getMovieFullDetails } from "../../../utils/functions-api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 const Hero = () => {
   const queryClient = useQueryClient();
-  const { data, error } = useSuspenseQuery({
-    queryKey: ["Top-Rated"],
-    queryFn: getTopRated,
-  });
+  const {
+    data: { results, total_pages },
+    error,
+  } = useAllPD(1);
+
   if (error) {
     console.log(error);
   }
-  const topRated = data?.results.slice(0, 1);
-  const topID = topRated[0]?.id;
+  const [highestPopularMovie] = results?.slice(0, 1);
+  const movieID = highestPopularMovie?.id;
+
   const { data: movie } = useSuspenseQuery({
-    queryKey: ["topMovie"],
-    queryFn: () => getMovieFullDetails(topID),
+    queryKey: ["FullMovieDetails", movieID],
+    queryFn: () => getMovieFullDetails(movieID),
   });
 
   const hours = Math.floor(movie?.runtime / 60);
@@ -30,20 +32,20 @@ const Hero = () => {
         <h1 className="hero-heading my-3 p-0">
           <span>{movie?.title}</span>
         </h1>
-        <div className="details d-flex gap-1">
-          <p>
+        <div className="details d-flex mb-3">
+          <p className="p-0 m-0">
             <span className="text-white-50 p-0">Duration: </span>
             <span className="text-white fw-bold">
               {hours}H {minuts}M /
             </span>
           </p>
-          <p>
+          <p className="p-0 m-0">
             <span className="text-white-50 p-0"> Ault: </span>
             <span className="text-main-blue fw-bold">
               {movie.adult ? "Yes" : "No"} /
             </span>
           </p>
-          <p>
+          <p className="p-0 m-0">
             <span className="text-white-50 p-0">Relase: </span>
             <span className="text-main-blue fw-bold">
               {movie?.release_date}
