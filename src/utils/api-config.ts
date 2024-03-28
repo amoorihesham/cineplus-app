@@ -1,6 +1,8 @@
 
 
 export const baseUrl = "https://api.themoviedb.org/3/movie/";
+export const sBaseURL = "https://api.themoviedb.org/3/search/movie?";
+export const MDbaseURL = 'https://api.themoviedb.org/3/movie/'
 export const options = {
   headers: {
     accept: "application/json",

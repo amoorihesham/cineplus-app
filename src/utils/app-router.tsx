@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../containers/Main-Layout/MainLayout";
-import { ComingSoon, Home, NowPlaying } from "../pages";
+import { ComingSoon, Home, NowPlaying, Search } from "../pages";
+import { LoadingSkeleton } from "../components";
 
 const router = createBrowserRouter([
   {
@@ -13,11 +15,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/nowplaying",
-        element: <NowPlaying />,
+        element: (
+          <Suspense fallback={<LoadingSkeleton />}>
+            <NowPlaying />
+          </Suspense>
+        ),
       },
       {
         path: "/comingsoon",
-        element: <ComingSoon />,
+        element: (
+          <Suspense fallback={<LoadingSkeleton />}>
+            {" "}
+            <ComingSoon />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
     ],
   },

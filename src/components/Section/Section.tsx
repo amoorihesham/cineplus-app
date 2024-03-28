@@ -1,18 +1,34 @@
-import { SectionProps } from "../../types/props-types";
+import { MovieProps, SectionProps } from "../../types/props-types";
 import { MovieCard } from "../";
+import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
-const Section = ({ sectionName, nowPlayingList }: SectionProps) => {
+const Section = ({ sectionName, route, queryKey, queryFn }: SectionProps) => {
+  const queryClient = useQueryClient();
+
+  const { data, error } = useSuspenseQuery({
+    queryKey: [`${queryKey}`],
+    queryFn: queryFn,
+
+  });
+
+  if (error) {
+    throw error;
+  }
+
   return (
     <div className="section py-5">
       <div className="container">
         <div className="header d-flex align-items-center justify-content-between">
           <h4 className="text-white fw-bold">{sectionName}</h4>
-          <p className="p-0 m-0 text-white-50">View All</p>
+          <Link className="p-0 m-0 text-white-50" to={route}>
+            View All
+          </Link>
         </div>
         <div className="movies-list mt-3">
           <div className="row g-4">
-            {nowPlayingList?.map((movie) => (
-              <div className="col-md-3" key={movie.id}>
+            {data?.results?.slice(0, 4).map((movie: MovieProps) => (
+              <div className="col-md-6 col-lg-4 col-xl-3" key={movie.id}>
                 <MovieCard data={movie} />
               </div>
             ))}

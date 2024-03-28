@@ -1,14 +1,24 @@
-import { Hero } from "../../components";
+import { Link, NavLink } from "react-router-dom";
+import { Hero, LoadingSkeleton } from "../../components";
+
+import {
+  faFilm,
+  faHourglassHalf,
+  faHouse,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
+import { Suspense } from "react";
 
 const Header = () => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg bg-transparent">
         <div className="container">
-          <a className="navbar-brand text-white" href="/">
-            CinePlus
-          </a>
+          <Link className="navbar-brand text-white " to="/">
+            <img src="./images/branding/logo.png" alt="Cinepluse logo" />
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,25 +33,41 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a
-                  className="nav-link active text-white"
-                  aria-current="page"
-                  href="/"
-                >
+                <NavLink className="nav-link  " aria-current="page" to="/">
+                  <FontAwesomeIcon icon={faHouse} style={{ marginRight: 5 }} />{" "}
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white" href="/cars">
-                  Trending
-                </a>
+                <NavLink className="nav-link " to="/nowplaying">
+                  <FontAwesomeIcon icon={faFilm} style={{ marginRight: 5 }} />
+                  Now Showing
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link " to="/comingsoon">
+                  <FontAwesomeIcon
+                    icon={faHourglassHalf}
+                    style={{ marginRight: 5 }}
+                  />{" "}
+                  Coming Soon
+                </NavLink>
+              </li>
+              <li className="nav-item main-bg rounded-3 d-flex align-items-center justify-content-center">
+                <NavLink className="sButton" to="/search">
+                  <FontAwesomeIcon icon={faSearch} style={{ marginRight: 5 }} />
+                  Search
+                </NavLink>
               </li>
             </ul>
           </div>
         </div>
       </nav>
       <div className="container">
-        <Hero />
+        <Suspense fallback={<LoadingSkeleton />}>
+          <Hero />
+        </Suspense>
+        <div className="mouse"></div>
       </div>
     </header>
   );

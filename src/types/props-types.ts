@@ -16,7 +16,8 @@ export type movieCardProp = {
     video: boolean;
     vote_average: number;
     vote_count: number;
-  };
+  },
+
 };
 
 export type MovieProps = {
@@ -39,5 +40,7 @@ export type MovieProps = {
 
 export type SectionProps = {
   sectionName: string,
-  nowPlayingList: MovieProps[]
+  route: string,
+  queryKey: string,
+  queryFn: () => Promise<any>
 }

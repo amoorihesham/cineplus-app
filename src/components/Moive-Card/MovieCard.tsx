@@ -10,9 +10,16 @@ const MovieCard = ({ data }: movieCardProp) => {
       style={{ backgroundColor: "#1c2835" }}
     >
       <img
-        src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
+        src={
+          data.backdrop_path === null && data.poster_path === null
+            ? "https://placehold.co/1920x1080"
+            : data.backdrop_path === null
+            ? `https://image.tmdb.org/t/p/original/${data.poster_path}`
+            : `https://image.tmdb.org/t/p/original/${data.backdrop_path}`
+        }
         alt={data.title}
         className="img-fluid"
+        style={{ height: "160px" }}
         loading="lazy"
       />
       <h4 className="text-white fw-bold mt-3">{data.title}</h4>

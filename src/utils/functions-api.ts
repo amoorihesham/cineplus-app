@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl, options } from "./api-config";
+import { MDbaseURL, baseUrl, options, sBaseURL } from "./api-config";
 
 export async function getNowPlaying() {
   try {
@@ -15,10 +15,10 @@ export async function getNowPlaying() {
     return error;
   }
 }
-export async function getAllNowPlaying() {
+export async function getAllNowPlaying(pageNum: number) {
   try {
     const { data } = await axios.get(
-      `${baseUrl}now_playing?language=en-US&page=1`,
+      `${baseUrl}now_playing?language=en-US&page=${pageNum}`,
       options
     );
 
@@ -42,10 +42,10 @@ export async function getComingSoon() {
     return error;
   }
 }
-export async function getAllComingSoon(pagenum: number) {
+export async function getAllComingSoon(pageNum: number) {
   try {
     const { data } = await axios.get(
-      `${baseUrl}upcoming?language=en-US&page=${pagenum}`,
+      `${baseUrl}upcoming?language=en-US&page=${pageNum}`,
       options
     );
 
@@ -54,4 +54,37 @@ export async function getAllComingSoon(pagenum: number) {
     console.log(error);
     return error;
   }
+}
+
+export async function searchHandler(term: string) {
+  try {
+    const { data } = await axios.get(`${sBaseURL}query=${term}&include_adult=false&language=en-US&page=1`, options);
+
+    return data
+  } catch (error) {
+    return error
+  }
+
+}
+
+export async function getTopRated() {
+  try {
+    const { data } = await axios.get(`${baseUrl}popular?language=en-US&page=1`, options);
+
+    return data
+  } catch (error) {
+    return error
+  }
+
+}
+
+export async function getMovieFullDetails(movieID: number) {
+  try {
+    const { data } = await axios.get(`${MDbaseURL}${movieID}?language=en-US`, options);
+
+    return data
+  } catch (error) {
+    return error
+  }
+
 }

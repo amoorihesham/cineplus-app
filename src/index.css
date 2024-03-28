@@ -44,3 +44,7 @@ body {
 .scale-1 {
   scale: 1.3;
 }
+
+.btn:hover {
+  background-color: #7bcfe1;
+}
