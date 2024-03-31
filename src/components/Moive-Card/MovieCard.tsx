@@ -26,7 +26,7 @@ const MovieCard = ({ data }: movieCardProp) => {
       <h4 className="text-white fw-bold mt-3">{data.title}</h4>
       <p className="text-white-50 fw-light">{data.release_date}</p>
       <div className="box d-flex align-items-center justify-content-between">
-        <Link className="btn main-bg text-white" to={`movie/${data.id}`}>
+        <Link className="btn main-bg text-white" to={`/movie/${data.id}`}>
           Details
         </Link>
         <div className="rate">

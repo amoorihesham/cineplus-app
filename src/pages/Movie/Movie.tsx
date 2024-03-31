@@ -16,12 +16,12 @@ const Movie = () => {
   } = useMovieData(id);
 
   const hours = Math.floor(MovieData?.runtime / 60);
-  console.log(ProvidersData);
+
   let Countries = [];
   for (const prop in ProvidersData) {
     Countries.push(prop);
   }
-  console.log(Countries);
+
   const minuts = MovieData.runtime - hours * 60;
   const videos = results.slice(0, 5);
   const vidsIDS = videos.map((video: any) => video.key);
@@ -106,9 +106,6 @@ const Movie = () => {
             <ReactPlayer
               url={`https://youtube.com/watch?v=${vidsIDS[0]}`}
               controls
-              // width={990}
-              // height={459}
-              style={{ width: 990 }}
             />
           </div>
         </div>

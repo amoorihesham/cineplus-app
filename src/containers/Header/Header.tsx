@@ -19,7 +19,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg bg-transparent">
         <div className="container">
           <Link className="navbar-brand text-white " to="/">
-            <img src="./images/branding/logo.png" alt="Cinepluse logo" />
+            <img src="./images/logo.png" alt="Cinepluse logo" />
           </Link>
           <button
             className="navbar-toggler"
