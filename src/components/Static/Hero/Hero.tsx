@@ -1,9 +1,9 @@
-import { useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import useAllPD from "../../../utils/hooks/useAllPopularData";
-import { getMovieFullDetails } from "../../../utils/functions-api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import useMovieData from "../../../utils/hooks/useMovieData";
+import { Link } from "react-router-dom";
 const Hero = () => {
   const queryClient = useQueryClient();
   const {
@@ -55,10 +55,10 @@ const Hero = () => {
         <p className="text-white-50 mb-3">
           Status: <span className="text-white fw-bold">{MovieData.status}</span>
         </p>
-        <button className="btn main-bg text-white  ">
+        <Link className="btn main-bg text-white " to={`/movie/${MovieData.id}`}>
           <FontAwesomeIcon icon={faCirclePlay} style={{ marginRight: 5 }} />
           Trailer
-        </button>
+        </Link>
       </div>
     </section>
   );
