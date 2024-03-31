@@ -66,7 +66,7 @@ export async function searchHandler(term: string) {
 
 
 
-export async function getMovieFullDetails(movieID: number) {
+export async function getMovieFullDetails(movieID: number | string | undefined) {
   try {
     const { data } = await axios.get(`${MDbaseURL}${movieID}?language=en-US`, options);
 
@@ -75,4 +75,23 @@ export async function getMovieFullDetails(movieID: number) {
     return error
   }
 
+}
+
+export async function getMovieVideos(movieID: number | string | undefined) {
+  try {
+    const { data } = await axios.get(`${MDbaseURL}${movieID}/videos?language=en-US`, options)
+
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
+export async function getMovieProviders(movieID: number | string | undefined) {
+  try {
+    const { data: { results } } = await axios.get(`${MDbaseURL}${movieID}/watch/providers`, options)
+
+    return results
+  } catch (error) {
+    console.log(error)
+  }
 }

@@ -43,3 +43,11 @@ export type SectionProps = {
   route: string,
 
 }
+
+export interface ProviderTypes {
+  display_priority: number,
+  logo_path: string,
+  provider_id: number,
+  provider_name: string
+
+}
