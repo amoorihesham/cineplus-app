@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../containers/Main-Layout/MainLayout";
-import { Home, Movie, Search } from "../pages";
+import { Home, Login, Movie, Register, Search } from "../pages";
 import { LoadingSkeleton } from "../components";
 const NowPlaying = lazy(() => import("../pages/Now-Playing/NowPlaying"));
 const ComingSoon = lazy(() => import("../pages/Coming-Soon/ComingSoon"));
@@ -58,6 +58,14 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <Search />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

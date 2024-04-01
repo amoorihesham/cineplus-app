@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import { Hero, LoadingSkeleton } from "../../components";
-
 import {
   faBolt,
   faFilm,
@@ -11,9 +10,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
-import { Suspense } from "react";
+import { FormEvent, Suspense } from "react";
+import axios from "axios";
 
 const Header = () => {
+  const handleLogout = async (e: FormEvent) => {
+    e.preventDefault();
+    const { data } = await axios.get("http://localhost:2024/api/logout", {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    localStorage.removeItem("user");
+    console.log(data);
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-lg bg-transparent">
@@ -72,6 +83,22 @@ const Header = () => {
                   <FontAwesomeIcon icon={faSearch} style={{ marginRight: 5 }} />
                   Search
                 </NavLink>
+              </li>
+              <li className="nav-item main-bg rounded-3 d-flex align-items-center justify-content-center">
+                <NavLink className="sButton" to="/login">
+                  Login
+                </NavLink>
+              </li>
+              <li className="nav-item main-bg rounded-3 d-flex align-items-center justify-content-center">
+                <NavLink className="sButton" to="/register">
+                  Register
+                </NavLink>
+              </li>
+              <li
+                className="nav-item main-bg rounded-3 d-flex align-items-center justify-content-center"
+                onClick={handleLogout}
+              >
+                Logout
               </li>
             </ul>
           </div>
