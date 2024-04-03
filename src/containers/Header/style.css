@@ -1,88 +1,105 @@
 header {
-  min-height: 100vh;
-  background-image: url(../../../public/images/hero-good.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
+	min-height: 100vh;
+	background-image: url(../../../public/images/hero-good.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
 }
 .hero-section {
-  max-width: 550px;
-  min-height: calc(100vh - 56px);
-  padding: 4rem 0;
+	max-width: 550px;
+	min-height: calc(100vh - 56px);
+	padding: 4rem 0;
 }
 .hero-heading {
-  color: var(--mainWhiteColor);
-  font-size: 3.5rem;
-  font-weight: var(--MeduimFont);
-  line-height: 1.1;
+	color: var(--mainWhiteColor);
+	font-size: 3.5rem;
+	font-weight: var(--MeduimFont);
+	line-height: 1.1;
 }
 .hero-heading span {
-  color: var(--altBlueColor);
+	color: var(--altBlueColor);
 }
 .hero-para {
-  max-width: 470px;
-  color: var(--veryPaleBlueColor);
-  line-height: 1.4;
-  letter-spacing: 0.5px;
+	max-width: 470px;
+	color: var(--veryPaleBlueColor);
+	line-height: 1.4;
+	letter-spacing: 0.5px;
 }
 .nav-item:not(:last-of-type) {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 .nav-link {
-  color: rgb(255, 255, 255);
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  transition: 0.5s;
+	color: rgb(255, 255, 255);
+	font-size: 1rem;
+	letter-spacing: 0.5px;
+	transition: 0.5s;
 }
 .nav-link:hover {
-  color: var(--mainSeimoneColor);
-  transform: translateY(-5px);
+	color: var(--mainSeimoneColor);
+	transform: translateY(-5px);
 }
 .nav-link.active {
-  color: var(--mainSeimoneColor) !important;
+	color: var(--mainSeimoneColor) !important;
 }
 .sButton {
-  color: white;
-  font-weight: var(--MeduimFont);
-  text-decoration: none;
-  padding: 0 15px;
+	color: white;
+	font-weight: var(--MeduimFont);
+	text-decoration: none;
+	padding: 0 15px;
+	cursor: pointer;
+	transition: 0.5s;
 }
 
 .mouse {
-  width: 50px;
-  height: 90px;
-  border: 3px solid var(--mainBlueColor);
-  border-radius: 60px;
-  position: relative;
-  bottom: 100px;
-  left: 50%;
+	width: 50px;
+	height: 90px;
+	border: 3px solid var(--mainBlueColor);
+	border-radius: 60px;
+	position: relative;
+	bottom: 100px;
+	left: 50%;
 }
 
 .mouse::before {
-  content: "";
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--altBlueColor);
-  border-radius: 50%;
-  opacity: 1;
-  animation: wheel 2s infinite;
-  -webkit-animation: wheel 2s infinite;
+	content: '';
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--altBlueColor);
+	border-radius: 50%;
+	opacity: 1;
+	animation: wheel 2s infinite;
+	-webkit-animation: wheel 2s infinite;
 }
+.dropdown ul {
+	left: -50px !important;
+	top: 130% !important;
+}
+.dropdown ul::before {
+	content: '';
+	position: absolute;
+	top: -15px;
+	left: 50%;
+	transform: translateX(-50%);
 
+	border: 10px solid var(--veryPaleBlueColor);
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
 @keyframes wheel {
-  to {
-    opacity: 0;
-    top: 60px;
-  }
+	to {
+		opacity: 0;
+		top: 60px;
+	}
 }
 
 @-webkit-keyframes wheel {
-  to {
-    opacity: 0;
-    top: 60px;
-  }
+	to {
+		opacity: 0;
+		top: 60px;
+	}
 }

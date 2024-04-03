@@ -1,55 +1,53 @@
 :root {
-  --mainBlueColor: #18b2d3;
-  --altBlueColor: #7bcfe1;
-  --mainSeimoneColor: #f6c9b3;
-  --veryPaleBlueColor: #e4eff2;
-  --mainDarkColor: #3d4449;
-  --mainWhiteColor: #fbfbfb;
-  --ThinFont: 300;
-  --RegularFont: 400;
-  --MeduimFont: 700;
-  --BoldFont: 900;
+	--mainBlueColor: #18b2d3;
+	--altBlueColor: #7bcfe1;
+	--mainSeimoneColor: #f6c9b3;
+	--veryPaleBlueColor: #e4eff2;
+	--mainDarkColor: #3d4449;
+	--mainWhiteColor: #fbfbfb;
+	--ThinFont: 300;
+	--RegularFont: 400;
+	--MeduimFont: 700;
+	--BoldFont: 900;
 }
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
-  width: 1px;
-  background-color: transparent;
+	width: 3px;
+	background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--altBlueColor);
-  border-radius: 999px;
+	background-color: var(--altBlueColor);
+	border-radius: 999px;
 }
 body {
-  font-family: "Lato", sans-serif;
-  background-color: #0a141f;
+	font-family: 'Lato', sans-serif;
+	background-color: #0a141f;
 }
 .img-responsive {
-  max-width: 100%;
-  height: 100%;
+	max-width: 100%;
+	height: 100%;
 }
 .main-bg {
-  background-color: var(--mainBlueColor);
+	background-color: var(--mainBlueColor);
 }
 .bg-alt-blue {
-  background-color: var(--altBlueColor);
+	background-color: var(--altBlueColor);
 }
 .bg-pale-blue {
-  background-color: var(--veryPaleBlueColor);
+	background-color: var(--veryPaleBlueColor);
 }
 .text-default {
-  color: var(--mainWhiteColor);
+	color: var(--mainWhiteColor);
 }
 .text-main-blue {
-  color: var(--mainBlueColor);
+	color: var(--mainBlueColor);
 }
 .bg-main-dark {
-  background-color: var(--mainDarkColor);
+	background-color: var(--mainDarkColor);
 }
 
-
-
 .btn:hover {
-  background-color: #7bcfe1;
+	background-color: #7bcfe1;
 }

@@ -1,4 +1,4 @@
-
+import { Dispatch, SetStateAction } from "react";
 
 export type movieCardProp = {
   data: {
@@ -49,5 +49,27 @@ export interface ProviderTypes {
   logo_path: string,
   provider_id: number,
   provider_name: string
+
+}
+
+
+export interface UserType {
+
+  firstName: string,
+  lastName: string,
+  email: string,
+  isAdmin: boolean,
+  token: string
+
+
+}
+
+export type UserContextType = {
+  user: UserType | null,
+  setCurrentUser: Dispatch<SetStateAction<UserType | null>>
+  errors: string | null,
+  Register: (firstName: string, lastName: string, email: string, password: string) => Promise<any>,
+  Login: (email: string, password: string) => Promise<any>,
+  Logout: () => void
 
 }
