@@ -8,7 +8,7 @@ import './style.css';
 
 const Movie = () => {
 	const { id } = useParams();
-
+	console.log(id);
 	const {
 		MovieData,
 		VideosData: { results },
