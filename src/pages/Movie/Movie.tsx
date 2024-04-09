@@ -2,11 +2,19 @@ import { useParams } from 'react-router-dom';
 import useMovieData from '../../utils/hooks/useMovieData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
-import { ProviderTypes } from '../../types/props-types';
 import ReactPlayer from 'react-player/youtube';
 import './style.css';
+import { MovieProps, UserContextType } from '../../types/props-types';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import axios from 'axios';
+import { useJwt } from 'react-jwt';
+import { toast } from 'react-toastify';
 
 const Movie = () => {
+	const { user } = useContext(AuthContext) as UserContextType;
+	const { isExpired, decodedToken } = useJwt(user?.token as string);
+
 	const { id } = useParams();
 	console.log(id);
 	const {
@@ -26,6 +34,30 @@ const Movie = () => {
 	const videos = results.slice(0, 5);
 	const vidsIDS = videos.map((video: any) => video.key);
 
+	const addToWatchList = async (userId: any, movie: MovieProps): Promise<any> => {
+		if (isExpired || decodedToken === null) {
+			toast('Please Login first', {
+				type: 'error',
+			});
+			return;
+		}
+		try {
+			const { data } = await axios.post(
+				`http://localhost:2024/api/watchlist/${userId}`,
+				{ ...movie },
+				{
+					headers: {
+						Authorization: `Bearer ${user?.token}`,
+					},
+				}
+			);
+			toast('Added Successfully', {
+				type: 'success',
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<div className='movie-page py-5'>
 			<div className='container'>
@@ -101,7 +133,10 @@ const Movie = () => {
 					</div>
 					<div className='col-md-6 col-lg-4 col-xl-3'>
 						<div className='actions-box'>
-							<button className='btn btn-success textwhite text-white'>
+							<button
+								className='btn btn-success textwhite text-white'
+								onClick={() => addToWatchList(user?._id, MovieData)}
+							>
 								<FontAwesomeIcon icon={faPlus} style={{ marginRight: 5 }} />
 								Watchlist
 							</button>

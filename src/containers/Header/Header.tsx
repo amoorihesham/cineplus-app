@@ -96,7 +96,7 @@ const Header = () => {
 											</Link>
 										</li>
 										<li>
-											<Link className='dropdown-item' to='/watchlist'>
+											<Link className='dropdown-item' to='/watch_list'>
 												<FontAwesomeIcon icon={faList} style={{ marginRight: 3 }} />
 												Watchlist
 											</Link>

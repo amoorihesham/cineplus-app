@@ -38,7 +38,15 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 	};
 	const Login = async (email: string, password: string) => {
 		try {
-			const { data } = await axios.post(loginUrl, { email, password }, headerWithCredienials);
+			const { data } = await axios.post(
+				loginUrl,
+				{
+					email,
+					password,
+				},
+				headerWithCredienials
+			);
+
 			toast('Logged In', {
 				type: 'success',
 			});
