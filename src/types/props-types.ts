@@ -54,7 +54,7 @@ export interface ProviderTypes {
 
 
 export interface UserType {
-
+  _id?: any
   firstName: string,
   lastName: string,
   email: string,
