@@ -1,11 +1,10 @@
 import { MovieProps } from "../../types/props-types";
 import { MovieCard } from "..";
-import { useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAllNSD from "../../utils/hooks/useNowShowingData";
 
 const NowShowingSection = () => {
-  const queryClient = useQueryClient();
+
 
   const {
     data: { results },

@@ -38,6 +38,9 @@ body {
 .bg-pale-blue {
 	background-color: var(--veryPaleBlueColor);
 }
+.text-alt-blue {
+	color: var(--altBlueColor);
+}
 .text-default {
 	color: var(--mainWhiteColor);
 }

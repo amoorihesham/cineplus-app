@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../containers/Main-Layout/MainLayout';
 import { Home, Login, Movie, Register, Search } from '../pages';
 import { LoadingSkeleton } from '../components';
+import GuardRoutes from '../components/GuardRoutes/guardRoutes';
 const NowPlaying = lazy(() => import('../pages/Now-Playing/NowPlaying'));
 const ComingSoon = lazy(() => import('../pages/Coming-Soon/ComingSoon'));
 const TopRated = lazy(() => import('../pages/Top-Rated/TopRated'));
@@ -51,9 +52,11 @@ const router = createBrowserRouter([
 			{
 				path: 'watch_list',
 				element: (
-					<Suspense fallback={<LoadingSkeleton />}>
-						<Watchlist />
-					</Suspense>
+					<GuardRoutes>
+						<Suspense fallback={<LoadingSkeleton />}>
+							<Watchlist />
+						</Suspense>
+					</GuardRoutes>
 				),
 			},
 			{

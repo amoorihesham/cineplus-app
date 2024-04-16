@@ -1,29 +1,8 @@
-header {
-	min-height: 100vh;
-	background-image: url(../../../public/images/hero-good.jpg);
-	background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
+.navbar {
+	max-height: 60px;
 }
-.hero-section {
-	max-width: 550px;
-	min-height: calc(100vh - 56px);
-	padding: 4rem 0;
-}
-.hero-heading {
-	color: var(--mainWhiteColor);
-	font-size: 3.5rem;
-	font-weight: var(--MeduimFont);
-	line-height: 1.1;
-}
-.hero-heading span {
-	color: var(--altBlueColor);
-}
-.hero-para {
-	max-width: 470px;
-	color: var(--veryPaleBlueColor);
-	line-height: 1.4;
-	letter-spacing: 0.5px;
+.navbar-brand img {
+	width: 50px;
 }
 .nav-item:not(:last-of-type) {
 	margin-right: 10px;
@@ -40,6 +19,31 @@ header {
 }
 .nav-link.active {
 	color: var(--mainSeimoneColor) !important;
+}
+.hero-heading {
+	color: var(--altBlueColor);
+	text-align: left;
+	font-size: 3rem;
+	max-width: 470px;
+	margin: auto;
+	font-weight: var(--MeduimFont);
+	line-height: 1.1;
+}
+.hero-para {
+	letter-spacing: 0.5px;
+	line-height: 1.4;
+	font-weight: var(--ThinFont);
+	max-width: 470px;
+	margin: 1rem auto;
+	text-align: left;
+	color: rgb(206, 206, 206);
+}
+.hero-status {
+	font-weight: var(--BoldFont);
+	color: rgb(153, 153, 153);
+	max-width: 470px;
+	margin: 0;
+	text-align: left;
 }
 .sButton {
 	color: white;

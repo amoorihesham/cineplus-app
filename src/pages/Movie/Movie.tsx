@@ -13,10 +13,9 @@ import { toast } from 'react-toastify';
 
 const Movie = () => {
 	const { user } = useContext(AuthContext) as UserContextType;
+
 	const { isExpired, decodedToken } = useJwt(user?.token as string);
-
 	const { id } = useParams();
-
 	const {
 		MovieData,
 		VideosData: { results },
@@ -36,7 +35,7 @@ const Movie = () => {
 
 	const addToWatchList = async (userId: any, movie: MovieProps): Promise<any> => {
 		if (isExpired || decodedToken === null) {
-			toast('Please Login first', {
+			toast('Your Token Expired Login Again', {
 				type: 'error',
 			});
 			return;
@@ -54,8 +53,10 @@ const Movie = () => {
 			toast('Added Successfully', {
 				type: 'success',
 			});
-		} catch (error) {
-			console.log(error);
+		} catch (error: any) {
+			toast(error.response.data.message, {
+				type: 'error',
+			});
 		}
 	};
 	return (
@@ -80,8 +81,7 @@ const Movie = () => {
 										<p className='text-white p-0 m-0 fw-bold mb-1'>IMDB Rating</p>
 										<p className='pill '>
 											<FontAwesomeIcon icon={faStar} color='gold' style={{ marginRight: 3 }} />
-											<span className='fw-bold fs-6'>{MovieData.vote_average.toFixed(2)}</span>/
-											<span className='text-white-50'>10</span>
+											<span className='fw-bold fs-6'>{MovieData.vote_average.toFixed(2)}</span>/<span className='text-white-50'>10</span>
 										</p>
 									</div>
 								</div>
@@ -133,10 +133,7 @@ const Movie = () => {
 					</div>
 					<div className='col-md-6 col-lg-4 col-xl-3'>
 						<div className='actions-box'>
-							<button
-								className='btn btn-success textwhite text-white'
-								onClick={() => addToWatchList(user?._id, MovieData)}
-							>
+							<button className='btn btn-success textwhite text-white' onClick={() => addToWatchList(user?._id, MovieData)}>
 								<FontAwesomeIcon icon={faPlus} style={{ marginRight: 5 }} />
 								Watchlist
 							</button>

@@ -1,0 +1,20 @@
+.image-continer {
+	position: relative;
+}
+.overlay {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	/* z-index: -1; */
+}
+.detail-wraper {
+	max-width: 470px;
+	margin: 0 auto 1rem auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

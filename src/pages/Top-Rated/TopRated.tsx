@@ -1,52 +1,49 @@
-import { useQueryClient } from "@tanstack/react-query";
-import { MovieCard } from "../../components";
-import { MovieProps } from "../../types/props-types";
-import { useState } from "react";
+import { MovieCard } from '../../components';
+import { MovieProps } from '../../types/props-types';
+import { useState } from 'react';
 
-import useAllTRD from "../../utils/hooks/useAllTopRatedData";
+import useAllTRD from '../../utils/hooks/useAllTopRatedData';
 
 const TopRated = () => {
-  const [page, setPage] = useState(1);
-  const queryClient = useQueryClient();
-  const {
-    data: { results, total_pages },
-    error,
-  } = useAllTRD(page);
-  if (error) {
-    throw error;
-  }
-  return (
-    <div className="coming-soon-page py-5">
-      <div className="container">
-        <h2 className="text-white fw-bold h4 mb-4">Top Rated</h2>
-        <div className="row g-4">
-          {results?.map((movie: MovieProps) => (
-            <div className="col-md-6 col-lg-4 col-xl-3" key={movie.id}>
-              <MovieCard data={movie} />
-            </div>
-          ))}
-        </div>
-        <div className="actions d-flex  align-items-center justify-content-center gap-4 mt-5">
-          <button
-            disabled={page === total_pages}
-            className="btn main-bg text-white order-last w-25"
-            onClick={() => setPage((page) => page + 1)}
-          >
-            Next
-          </button>
-          <button
-            disabled={page === 1}
-            className="btn main-bg text-white w-25"
-            onClick={() =>
-              setPage((page) => (page > 1 ? page - 1 : (page = 1)))
-            }
-          >
-            Previous
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+	const [page, setPage] = useState(1);
+
+	const {
+		data: { results, total_pages },
+		error,
+	} = useAllTRD(page);
+	if (error) {
+		throw error;
+	}
+	return (
+		<div className='coming-soon-page py-5'>
+			<div className='container'>
+				<h2 className='text-white fw-bold h4 mb-4'>Top Rated</h2>
+				<div className='row g-4'>
+					{results?.map((movie: MovieProps) => (
+						<div className='col-md-6 col-lg-4 col-xl-3' key={movie.id}>
+							<MovieCard data={movie} />
+						</div>
+					))}
+				</div>
+				<div className='actions d-flex  align-items-center justify-content-center gap-4 mt-5'>
+					<button
+						disabled={page === total_pages}
+						className='btn main-bg text-white order-last w-25'
+						onClick={() => setPage((page) => page + 1)}
+					>
+						Next
+					</button>
+					<button
+						disabled={page === 1}
+						className='btn main-bg text-white w-25'
+						onClick={() => setPage((page) => (page > 1 ? page - 1 : (page = 1)))}
+					>
+						Previous
+					</button>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default TopRated;

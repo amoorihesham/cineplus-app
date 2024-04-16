@@ -65,16 +65,13 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 			const { data } = await axios.get(logoutUrl, headerWithCredienials);
 			localStorage.removeItem('user');
 			setCurrentUser(null);
+			window.location.pathname = '/';
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	return (
-		<AuthContext.Provider value={{ user, setCurrentUser, errors, Register, Login, Logout }}>
-			{children}
-		</AuthContext.Provider>
-	);
+	return <AuthContext.Provider value={{ user, setCurrentUser, errors, Register, Login, Logout }}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;

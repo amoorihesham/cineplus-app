@@ -95,3 +95,18 @@ export async function getMovieProviders(movieID: number | string | undefined) {
     console.log(error)
   }
 }
+
+export async function getUserWatchList(userId: any, userToken: any) {
+  try {
+    const { data } = await axios.get(`http://localhost:2024/api/watchlist/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`
+      }
+    })
+    return data?.watchlist.movies
+
+  } catch (error) {
+    console.log(error)
+
+  }
+}
