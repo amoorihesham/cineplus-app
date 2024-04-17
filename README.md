@@ -7,8 +7,8 @@ This project was Completley Madded By React And It's Ecosystem.
 * List All Catecories Movies
 * Search By Movie Name
 * Play Movie trailer
-* Auth (Soon)
-* Watchlist (Soon)
+* Auth 
+* Watchlist 
 
 ## Technologies Used
  * React js
