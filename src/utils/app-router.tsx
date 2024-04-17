@@ -1,9 +1,11 @@
 import { Suspense, lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import MainLayout from '../containers/Main-Layout/MainLayout';
-import { Home, Login, Movie, Register, Search } from '../pages';
+import { Login, Register, Search } from '../pages';
 import { LoadingSkeleton } from '../components';
 import GuardRoutes from '../components/GuardRoutes/guardRoutes';
+const MainLayout = lazy(() => import('../containers/Main-Layout/MainLayout'));
+const Home = lazy(() => import('../pages/Home/Home'));
+const Movie = lazy(() => import('../pages/Movie/Movie'));
 const NowPlaying = lazy(() => import('../pages/Now-Playing/NowPlaying'));
 const ComingSoon = lazy(() => import('../pages/Coming-Soon/ComingSoon'));
 const TopRated = lazy(() => import('../pages/Top-Rated/TopRated'));
@@ -11,11 +13,19 @@ const Watchlist = lazy(() => import('../pages/Watchlist/Watchlist'));
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <MainLayout />,
+		element: (
+			<Suspense fallback={<LoadingSkeleton />}>
+				<MainLayout />
+			</Suspense>
+		),
 		children: [
 			{
 				index: true,
-				element: <Home />,
+				element: (
+					<Suspense fallback={<LoadingSkeleton />}>
+						<Home />
+					</Suspense>
+				),
 			},
 			{
 				path: '/now_shownig',
