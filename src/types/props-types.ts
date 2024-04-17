@@ -89,5 +89,6 @@ export type UserContextType = {
   Register: (firstName: string, lastName: string, email: string, password: string) => Promise<any>,
   Login: (email: string, password: string) => Promise<any>,
   Logout: () => void
+  isLoading: boolean,
 
 }

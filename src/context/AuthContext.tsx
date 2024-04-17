@@ -9,9 +9,11 @@ export const AuthContext = React.createContext<UserContextType | null>(null);
 
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const [errors, setErrors] = useState(null);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [user, setCurrentUser] = useState<UserType | null>(null);
 
 	const Register = async (firstName: string, lastName: string, email: string, password: string) => {
+		setIsLoading(true);
 		const userObj = {
 			firstName,
 			lastName,
@@ -34,9 +36,12 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 				data: { message },
 			} = error.response;
 			setErrors(message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 	const Login = async (email: string, password: string) => {
+		setIsLoading(true);
 		try {
 			const { data } = await axios.post(
 				loginUrl,
@@ -58,6 +63,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 				data: { message },
 			} = error.response;
 			setErrors(message);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 	const Logout = async () => {
@@ -71,7 +78,9 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 		}
 	};
 
-	return <AuthContext.Provider value={{ user, setCurrentUser, errors, Register, Login, Logout }}>{children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={{ user, setCurrentUser, errors, Register, Login, Logout, isLoading }}>{children}</AuthContext.Provider>
+	);
 };
 
 export default AuthProvider;

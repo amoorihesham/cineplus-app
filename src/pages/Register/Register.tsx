@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { UserContextType } from '../../types/props-types';
 
 const Register = () => {
-	const { Register, errors } = useContext(AuthContext) as UserContextType;
+	const { Register, errors, isLoading } = useContext(AuthContext) as UserContextType;
 	const [fName, setFName] = useState('');
 	const [lName, setLName] = useState('');
 	const [email, setEmail] = useState('');
@@ -23,40 +23,19 @@ const Register = () => {
 						<label htmlFor='fName' className='text-white mb-2 fw-bold'>
 							First Name:
 						</label>
-						<input
-							type='text'
-							required
-							className='form-control'
-							id='fName'
-							value={fName}
-							onChange={(e) => setFName(e.target.value)}
-						/>
+						<input type='text' required className='form-control' id='fName' value={fName} onChange={(e) => setFName(e.target.value)} />
 					</div>
 					<div className='form-group mb-3'>
 						<label htmlFor='lName' className='text-white mb-2 fw-bold'>
 							Last Name:
 						</label>
-						<input
-							type='text'
-							required
-							className='form-control'
-							id='lName'
-							value={lName}
-							onChange={(e) => setLName(e.target.value)}
-						/>
+						<input type='text' required className='form-control' id='lName' value={lName} onChange={(e) => setLName(e.target.value)} />
 					</div>
 					<div className='form-group mb-3'>
 						<label htmlFor='email' className='text-white mb-2 fw-bold'>
 							Email:
 						</label>
-						<input
-							type='email'
-							required
-							className='form-control'
-							id='email'
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
+						<input type='email' required className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
 					</div>
 					<div className='form-group'>
 						<label htmlFor='password' className='text-white mb-2 fw-bold'>
@@ -74,6 +53,7 @@ const Register = () => {
 				</form>
 				<button
 					className='btn main-bg text-white w-50 mx-auto d-block mt-4'
+					disabled={isLoading}
 					onClick={() => Register(fName, lName, email, password)}
 				>
 					Register

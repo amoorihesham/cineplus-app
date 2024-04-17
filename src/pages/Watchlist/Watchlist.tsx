@@ -3,14 +3,13 @@ import { MovieProps } from '../../types/props-types';
 import useWatchList from '../../utils/hooks/useWatchlist';
 
 const Watchlist = () => {
-	const { data, isError } = useWatchList();
-	console.log(isError);
-	console.log(data);
+	const { data } = useWatchList();
+
 	if (!data) {
 		return (
 			<div className='watchlist-page py-5'>
 				<div className='container'>
-					<h1>Your Watchlist Empty!</h1>
+					<h1 className='text-white fw-bold text-center'>Your Watchlist Empty!</h1>
 				</div>
 			</div>
 		);

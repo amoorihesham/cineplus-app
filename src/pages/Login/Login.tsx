@@ -4,7 +4,7 @@ import { UserContextType } from '../../types/props-types';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-	const { Login, errors } = useContext(AuthContext) as UserContextType;
+	const { Login, errors, isLoading } = useContext(AuthContext) as UserContextType;
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -44,7 +44,7 @@ const Login = () => {
 						Register Now
 					</Link>
 				</p>
-				<button className='btn main-bg text-white w-50 mx-auto d-block mt-4' onClick={() => Login(email, password)}>
+				<button className='btn main-bg text-white w-50 mx-auto d-block mt-4' disabled={isLoading} onClick={() => Login(email, password)}>
 					Login
 				</button>
 			</div>
