@@ -39,7 +39,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 	const Login = async (email: string, password: string) => {
 		try {
 			const { data } = await axios.post(
-				'https://cinepluse-backend.onrender.com/api/login',
+				loginUrl,
 				{
 					email,
 					password,

@@ -98,7 +98,7 @@ export async function getMovieProviders(movieID: number | string | undefined) {
 
 export async function getUserWatchList(userId: any, userToken: any) {
   try {
-    const { data } = await axios.get(`http://localhost:2024/api/watchlist/${userId}`, {
+    const { data } = await axios.get(`https://cinepluse-backend.onrender.com/api/watchlist/${userId}`, {
       headers: {
         Authorization: `Bearer ${userToken}`
       }

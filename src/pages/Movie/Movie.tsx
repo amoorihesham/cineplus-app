@@ -42,7 +42,7 @@ const Movie = () => {
 		}
 		try {
 			const { data } = await axios.post(
-				`http://localhost:2024/api/watchlist/${userId}`,
+				`https://cinepluse-backend.onrender.com/api/watchlist/${userId}`,
 				{ ...movie },
 				{
 					headers: {
