@@ -5,7 +5,7 @@ import { faPlus, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
 import ReactPlayer from 'react-player/youtube';
 import './style.css';
 import { MovieProps, UserContextType } from '../../types/props-types';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import { useJwt } from 'react-jwt';
@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 
 const Movie = () => {
 	const { user } = useContext(AuthContext) as UserContextType;
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const { isExpired, decodedToken } = useJwt(user?.token as string);
 	const { id } = useParams();
@@ -34,6 +35,7 @@ const Movie = () => {
 	const vidsIDS = videos.map((video: any) => video.key);
 
 	const addToWatchList = async (userId: any, movie: MovieProps): Promise<any> => {
+		setIsLoading(true);
 		if (isExpired || decodedToken === null) {
 			toast('Your Token Expired Login Again', {
 				type: 'error',
@@ -57,6 +59,8 @@ const Movie = () => {
 			toast(error.response.data.message, {
 				type: 'error',
 			});
+		} finally {
+			setIsLoading(false);
 		}
 	};
 	return (
@@ -133,7 +137,11 @@ const Movie = () => {
 					</div>
 					<div className='col-md-6 col-lg-4 col-xl-3'>
 						<div className='actions-box'>
-							<button className='btn btn-success textwhite text-white' onClick={() => addToWatchList(user?._id, MovieData)}>
+							<button
+								className='btn btn-success textwhite text-white'
+								disabled={isLoading}
+								onClick={() => addToWatchList(user?._id, MovieData)}
+							>
 								<FontAwesomeIcon icon={faPlus} style={{ marginRight: 5 }} />
 								Watchlist
 							</button>
