@@ -6,7 +6,7 @@ const Watchlist = () => {
 	const { data, isError } = useWatchList();
 	console.log(isError);
 	console.log(data);
-	if (isError || data) {
+	if (!data) {
 		return (
 			<div className='watchlist-page py-5'>
 				<div className='container'>
