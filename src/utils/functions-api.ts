@@ -103,7 +103,7 @@ export async function getUserWatchList(userId: any, userToken: any) {
         Authorization: `Bearer ${userToken}`
       }
     })
-    return data?.watchlist.movies
+    return data?.watchlist
 
   } catch (error) {
     console.log(error)

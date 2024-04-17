@@ -5,7 +5,8 @@ import useWatchList from '../../utils/hooks/useWatchlist';
 const Watchlist = () => {
 	const { data, isError } = useWatchList();
 	console.log(isError);
-	if (isError || data.length === 0) {
+	console.log(data);
+	if (isError || data) {
 		return (
 			<div className='watchlist-page py-5'>
 				<div className='container'>
@@ -18,7 +19,7 @@ const Watchlist = () => {
 		<div className='watchlist-page py-5'>
 			<div className='container'>
 				<div className='row g-4'>
-					{data?.map((movie: MovieProps) => (
+					{data?.movies.map((movie: MovieProps) => (
 						<div className='col-md-6 col-lg-4 col-xl-3' key={movie.id}>
 							<MovieCard data={movie} />
 						</div>
