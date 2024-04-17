@@ -4,11 +4,18 @@ import useWatchList from '../../utils/hooks/useWatchlist';
 
 const Watchlist = () => {
 	const { data, isError } = useWatchList();
-	if (isError) {
-		throw Error;
+	console.log(isError);
+	if (isError || data.length === 0) {
+		return (
+			<div className='watchlist-page py-5'>
+				<div className='container'>
+					<h1>Your Watchlist Empty!</h1>
+				</div>
+			</div>
+		);
 	}
 	return (
-		<div className='watchlidt-page py-5'>
+		<div className='watchlist-page py-5'>
 			<div className='container'>
 				<div className='row g-4'>
 					{data?.map((movie: MovieProps) => (

@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContextType } from '../../types/props-types';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 	const { Login, errors } = useContext(AuthContext) as UserContextType;
@@ -21,14 +22,7 @@ const Login = () => {
 						<label htmlFor='email' className='text-white mb-2 fw-bold'>
 							Email:
 						</label>
-						<input
-							type='email'
-							required
-							className='form-control'
-							id='email'
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
+						<input type='email' required className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} />
 					</div>
 					<div className='form-group'>
 						<label htmlFor='password' className='text-white mb-2 fw-bold'>
@@ -44,6 +38,12 @@ const Login = () => {
 						/>
 					</div>
 				</form>
+				<p className='text-white fw-bold text-center my-4'>
+					Don't have account yet!{' '}
+					<Link className='ms-3 btn main-bg text-white' to={'/register'}>
+						Register Now
+					</Link>
+				</p>
 				<button className='btn main-bg text-white w-50 mx-auto d-block mt-4' onClick={() => Login(email, password)}>
 					Login
 				</button>
