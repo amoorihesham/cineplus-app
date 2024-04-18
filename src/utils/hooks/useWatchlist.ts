@@ -1,9 +1,12 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getUserWatchList } from "../functions-api";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { UserContextType } from "../../types/props-types";
 
 
 const useWatchList = () => {
-    const user = JSON.parse(localStorage.getItem("user") as string);
+    const { user } = useContext(AuthContext) as UserContextType
 
 
     return useSuspenseQuery({
