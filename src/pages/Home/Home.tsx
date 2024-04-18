@@ -4,10 +4,8 @@ import { BannerSection, LoadingSkeleton, NowShowingSection, TopRatedSection } fr
 const Home = () => {
 	return (
 		<div className='home-page'>
-			<Suspense fallback={<LoadingSkeleton />}>
-				<NowShowingSection />
-				<TopRatedSection />
-			</Suspense>
+			<NowShowingSection />
+			<TopRatedSection />
 
 			<BannerSection />
 		</div>
