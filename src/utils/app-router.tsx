@@ -21,11 +21,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: (
-					<Suspense fallback={<LoadingSkeleton />}>
-						<Home />
-					</Suspense>
-				),
+				element: <Home />,
 			},
 			{
 				path: '/now_shownig',
