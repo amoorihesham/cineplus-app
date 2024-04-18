@@ -18,7 +18,6 @@ const MovieCard = ({ data }: movieCardProp) => {
 				alt={data.title}
 				className='img-fluid'
 				style={{ height: '160px' }}
-				loading='lazy'
 			/>
 			<h4 className='text-white fw-bold mt-3'>{data.title}</h4>
 			<p className='text-white-50 fw-light'>{data.release_date}</p>
