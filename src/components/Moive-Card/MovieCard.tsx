@@ -16,8 +16,7 @@ const MovieCard = ({ data }: movieCardProp) => {
 						: `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
 				}
 				alt={data.title}
-				className='img-fluid'
-				style={{ height: '160px' }}
+				className='w-100'
 			/>
 			<h4 className='text-white fw-bold mt-3'>{data.title}</h4>
 			<p className='text-white-50 fw-light'>{data.release_date}</p>
