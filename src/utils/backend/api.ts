@@ -1,6 +1,8 @@
-export const logoutUrl = 'https://cinepluse-backend.onrender.com/api/logout';
-export const registerUrl = "https://cinepluse-backend.onrender.com/api/register";
-export const loginUrl = 'https://cinepluse-backend.onrender.com/api/login';
+import appConfig from '../../../app.config'
+
+export const logoutUrl = `${appConfig.apiBaseUrl}/logout`;
+export const registerUrl = `${appConfig.apiBaseUrl}/register`;
+export const loginUrl = `${appConfig.apiBaseUrl}/login`;
 
 export const headerWithCredienials = {
     withCredentials: true,

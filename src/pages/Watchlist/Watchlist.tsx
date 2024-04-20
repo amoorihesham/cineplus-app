@@ -7,7 +7,7 @@ const Watchlist = () => {
 
 	if (!data) {
 		return (
-			<div className='watchlist-page py-5'>
+			<div className='page py-5'>
 				<div className='container'>
 					<h1 className='text-white fw-bold text-center'>Your Watchlist Empty!</h1>
 				</div>
