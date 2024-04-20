@@ -1,5 +1,6 @@
 import axios from "axios";
 import { MDbaseURL, baseUrl, options, sBaseURL } from "./api-config";
+import appConfig from "../app.config";
 
 
 export async function getAllNowPlaying(pageNum: number) {
@@ -98,7 +99,7 @@ export async function getMovieProviders(movieID: number | string | undefined) {
 
 export async function getUserWatchList(userId: any, userToken: any) {
   try {
-    const { data } = await axios.get(`https://cinepluse-backend.onrender.com/api/watchlist/${userId}`, {
+    const { data } = await axios.get(`${appConfig.apiBaseUrl}/watchlist/${userId}`, {
       headers: {
         Authorization: `Bearer ${userToken}`
       }

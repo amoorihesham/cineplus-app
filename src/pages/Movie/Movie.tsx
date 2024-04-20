@@ -10,6 +10,7 @@ import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import { useJwt } from 'react-jwt';
 import { toast } from 'react-toastify';
+import appConfig from '../../app.config';
 
 const Movie = () => {
 	const { user } = useContext(AuthContext) as UserContextType;
@@ -44,7 +45,7 @@ const Movie = () => {
 		}
 		try {
 			const { data } = await axios.post(
-				`https://cinepluse-backend.onrender.com/api/watchlist/${userId}`,
+				`${appConfig.apiBaseUrl}/watchlist/${userId}`,
 				{ ...movie },
 				{
 					headers: {

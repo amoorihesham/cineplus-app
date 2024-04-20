@@ -1,4 +1,4 @@
-import appConfig from '../../../app.config'
+import appConfig from '../../app.config'
 
 export const logoutUrl = `${appConfig.apiBaseUrl}/logout`;
 export const registerUrl = `${appConfig.apiBaseUrl}/register`;

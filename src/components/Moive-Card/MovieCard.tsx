@@ -1,10 +1,36 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { movieCardProp } from '../../types/props-types';
+import { UserContextType, movieCardProp } from '../../types/props-types';
 import './style.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import axios from 'axios';
+import appConfig from '../../app.config';
+import { toast } from 'react-toastify';
+import useWatchList from '../../utils/hooks/useWatchlist';
 
-const MovieCard = ({ data }: movieCardProp) => {
+const MovieCard = ({ data, isWatchlist }: movieCardProp) => {
+	const { user } = useContext(AuthContext) as UserContextType;
+	console.log(data);
+	const removeFromWatchlist = async () => {
+		try {
+			const { data: res } = await axios.delete(`${appConfig.apiBaseUrl}/watchlist/${user?._id}`, {
+				headers: {
+					Authorization: `Bearer ${user?.token}`,
+				},
+				data: {
+					movieId: data.id,
+				},
+			});
+			toast('Movie has been deleted', {
+				type: 'error',
+			});
+			
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<div className='movie-card p-3 rounded-3' style={{ backgroundColor: '#1c2835' }}>
 			<img
@@ -31,6 +57,13 @@ const MovieCard = ({ data }: movieCardProp) => {
 					</p>
 				</div>
 			</div>
+			{isWatchlist && (
+				<div>
+					<button className='btn btn-danger mt-3 w-100' onClick={removeFromWatchlist}>
+						Remove
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };

@@ -17,10 +17,13 @@ const Watchlist = () => {
 	return (
 		<div className='watchlist-page py-5'>
 			<div className='container'>
+				<div>
+					<button className='btn btn-danger my-3'>Clear Watchlist</button>
+				</div>
 				<div className='row g-4'>
 					{data?.movies.map((movie: MovieProps) => (
 						<div className='col-md-6 col-lg-4 col-xl-3' key={movie.id}>
-							<MovieCard data={movie} />
+							<MovieCard data={movie} isWatchlist={true} />
 						</div>
 					))}
 				</div>

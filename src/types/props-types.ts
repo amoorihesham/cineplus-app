@@ -17,7 +17,7 @@ export type movieCardProp = {
     vote_average: number;
     vote_count: number;
   },
-
+  isWatchlist?: boolean
 };
 export type CarouselItemProps = {
   data: {
